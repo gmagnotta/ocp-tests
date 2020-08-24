@@ -1,5 +1,5 @@
 kind: "BuildConfig"
-apiVersion: "build.openshift.io/v1"
+apiVersion: "v1"
 metadata:
   name: "simple-pipeline"
 spec:
@@ -7,7 +7,9 @@ spec:
     contextDir: simple-pipeline
     git:
       uri: "https://github.com/gmagnotta/ocp-tests"
-      ref: "simple-pipeline"
+      ref: "master"
+    type: Git
   strategy:
+    type: JenkinsPipeline 
     jenkinsPipelineStrategy:
-    type: JenkinsPipeline
+      jenkinsfilePath: "Jenkinsfile"
